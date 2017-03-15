@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if faculties %}
+	    <ul>
+	    {% for faculty in faculties %}
+	        <h2><a href="/faculty/{{ faculty.id }}/">{{ faculty.user.first_name }} {{faculty.user.last_name}}</a></h2>
+	        <p>{{faculty.user.email}}</p>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No faculty information is available.</p>
+	{% endif %}
+{% endblock content %}

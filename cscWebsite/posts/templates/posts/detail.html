@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block header%} Posts{% endblock header%}
+
+{% block content %}
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            	
+            	{% if post%}
+            	<div class="post-preview">
+                    <h2 class="post-title">
+                        {{ post.post_title }}
+                    </h2>
+                </div>
+            	<p>{{post.post_body|safe}}</p>
+            	<p class="post-meta">Posted by {{post.created_by}} on {{ post.pub_date|date:"F d, Y" }}</p>
+            	{% else %}
+            	<p>The post you are trying to view does not exist</p>
+            	{% endif %}
+            	
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock content %}

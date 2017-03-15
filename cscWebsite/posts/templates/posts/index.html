@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block header%}Posts{% endblock header%}
+
+{% block content %}
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	{% if posts %}
+	    {% for post in posts %}
+	    		<div class="post-preview">
+                    <a href="{% url "posts_detail" post.id %}">
+                        <h2 class="post-title">
+                            {{ post.post_title }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{ post.post_preview }}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by {{post.created_by}} on {{ post.pub_date|date:"F d, Y" }}</p>
+                </div>
+                <hr>
+	    {% endfor %}
+        <ul class="pager">
+            {% if posts.has_previous %}
+                <li class="previous">
+                    <a href="?page={{ posts.previous_page_number }}" style="float: left;">Newer Posts &rarr;</a>
+                </li>
+            {% endif %}
+            {% if posts.has_next %}
+                <li class="next">
+                    <a href="?page={{ posts.next_page_number }}">Older Posts &rarr;</a>
+                </li>
+            {% endif %}
+        </ul>
+	{% else %}
+	    <p>No posts are available.</p>
+	{% endif %}
+			</div>
+        </div>
+    </div>
+{% endblock content %}
+
+    
+                <!-- <ul class="pager">
+                    <li class="next">
+                        <a href="#">Older Posts &rarr;</a>
+                    </li>
+                </ul> -->

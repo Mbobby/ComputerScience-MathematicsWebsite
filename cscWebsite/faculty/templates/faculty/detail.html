@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if faculty%}
+	<h2>{{faculty.user.first_name}} {{faculty.user.last_name}} </h2>
+	<p>{{faculty.faculty_information}}</p>
+{% else %}
+	<p>The faculty you are trying to view does not exist</p>
+{% endif %}
+{% endblock content %}
