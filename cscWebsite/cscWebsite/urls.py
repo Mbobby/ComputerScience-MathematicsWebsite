@@ -16,10 +16,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import RedirectView
-
+from .views import index as home
 
 urlpatterns = [
 	url(r'^posts/', include('posts.urls')),
+    url(r'^news_events/', include('news_events.urls')),
     url(r'^faculty/', include('faculty.urls')),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^admin/', admin.site.urls),
@@ -29,6 +30,6 @@ urlpatterns = [
     url(r'^login/$', RedirectView.as_view(url='/accounts/login')),
     url(r'^logout/$', RedirectView.as_view(url='/accounts/logout')),
 
-    #Temporary: Remove after creating Home page
-    url(r'^$', RedirectView.as_view(url='/posts'), name="home"),
+    #Link to HomePage, implemented in cscWebsite
+    url(r'^$', home, name="home"),
 ]

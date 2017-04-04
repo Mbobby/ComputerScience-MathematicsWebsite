@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% block header%} Faculty {% endblock header%}
-
+{% block header%} News{% endblock header%}
 
 {% block content %}
 <article>
@@ -8,15 +7,15 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             	
-            	{% if faculty%}
+            	{% if news%}
             	<div class="post-preview">
                     <h2 class="post-title">
-                        {{faculty.faculty_title}}. {{faculty.user.first_name}} {{faculty.user.last_name}} 
+                        {{ news.news_title }}
                     </h2>
                 </div>
-            	<p>{{faculty.faculty_information|safe}}</p>
+            	<p>{{news.news_body|safe}}</p>
             	{% else %}
-            	<p>The post you are trying to view does not exist</p>
+            	<p>The page you are trying to view does not exist</p>
             	{% endif %}
             	
             </div>

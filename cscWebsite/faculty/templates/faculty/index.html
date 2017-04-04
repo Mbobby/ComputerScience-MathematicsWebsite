@@ -1,14 +1,27 @@
 {% extends "base.html" %}
+{% block header%} Faculty {% endblock header%}
 
 {% block content %}
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 	{% if faculties %}
-	    <ul>
 	    {% for faculty in faculties %}
-	        <h2><a href="/faculty/{{ faculty.id }}/">{{ faculty.user.first_name }} {{faculty.user.last_name}}</a></h2>
-	        <p>{{faculty.user.email}}</p>
+	    		<div class="post-preview">
+                    <a href="{% url "faculty_detail" faculty.id %}">
+                        <h2 class="post-title">{{faculty.faculty_title}}. {{ faculty.user.first_name }} {{faculty.user.last_name}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{ faculty.faculty_preview }}
+                        </h3>
+                    </a>
+                </div>
+                <hr>
 	    {% endfor %}
-	    </ul>
 	{% else %}
-	    <p>No faculty information is available.</p>
+	    <p>No posts are available.</p>
 	{% endif %}
+			</div>
+        </div>
+    </div>
 {% endblock content %}

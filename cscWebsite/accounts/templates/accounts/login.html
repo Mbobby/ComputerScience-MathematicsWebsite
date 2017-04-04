@@ -1,35 +1,51 @@
 {% extends "base.html" %}
-
+{% block header%}Login{% endblock header%}
 {% block content %}
 
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
 
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-    <p>Please login to see this page.</p>
-    {% endif %}
-{% endif %}
+<div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% if form.errors %}
+                <p>Your username and password didn't match. Please try again.</p>
+                {% endif %}
 
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
+                {% if next %}
+                    {% if user.is_authenticated %}
+                    <p>Your account doesn't have access to this page. To proceed,
+                    please login with an account that has access.</p>
+                    {% else %}
+                    <p>Please login to see this page.</p>
+                    {% endif %}
+                {% endif %}
+                <form  method="post" action="{% url 'login' %}" name="sentMessage" id="contactForm">
+                {% csrf_token %}
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>{{ form.username.label_tag }}</label>
+                            <input type="text" class="form-control" placeholder="Username" id="username" name="username" required data-validation-required-message="Please enter your Username.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>{{ form.username.label_tag }}</label>
+                            <input type="password" class="form-control" placeholder="Password" id="password" name="password" required data-validation-required-message="Please enter your passsword">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <input type="submit" value="login" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-<input type="submit" value="login" />
-</form>
+
 
 {# Assumes you setup the password_reset view in your URLconf #}
 

@@ -1,39 +1,38 @@
 {% extends "base.html" %}
-{% block header%}Posts{% endblock header%}
+{% block header%}Events{% endblock header%}
 
 {% block content %}
 	<div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-	{% if posts %}
-	    {% for post in posts %}
+	{% if events %}
+	    {% for event in events %}
 	    		<div class="post-preview">
-                    <a href="{% url "posts_detail" post.id %}">
+                    <a href="{% url "events_detail" event.id %}">
                         <h2 class="post-title">
-                            {{ post.post_title }}
+                            {{ event.event_title }}
                         </h2>
                         <h3 class="post-subtitle">
-                            {{ post.post_preview }}
+                            {{ event.event_preview }}
                         </h3>
                     </a>
-                    <p class="post-meta">Posted by {{post.created_by}} on {{ post.pub_date|date:"F d, Y" }}</p>
                 </div>
                 <hr>
 	    {% endfor %}
         <ul class="pager">
-            {% if posts.has_previous %}
+            {% if events.has_previous %}
                 <li class="previous">
-                    <a href="?page={{ posts.previous_page_number }}" style="float: left;">&larrtl; Newer Posts</a>
+                    <a href="?page={{ events.previous_page_number }}" style="float: left;">&larrtl; Current Events</a>
                 </li>
             {% endif %}
-            {% if posts.has_next %}
+            {% if events.has_next %}
                 <li class="next">
-                    <a href="?page={{ posts.next_page_number }}">Older Posts &rarr;</a>
+                    <a href="?page={{ events.next_page_number }}">Later Events &rarr;</a>
                 </li>
             {% endif %}
         </ul>
 	{% else %}
-	    <p>No posts are available.</p>
+	    <p>No Events are available.</p>
 	{% endif %}
 			</div>
         </div>

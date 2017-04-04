@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'posts.apps.PostsConfig',
+    'news_events.apps.NewsEventsConfig',
     'accounts.apps.AccountsConfig',
     'faculty.apps.FacultyConfig',
     'django.contrib.admin',
@@ -118,8 +119,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = 'posts_index'
-LOGOUT_REDIRECT_URL = 'posts_index'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
